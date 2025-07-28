@@ -8,8 +8,9 @@ class QuizGenerator:
     """选择题生成器组件"""
     
     def __init__(self):
-        self.templates_dir = "templates"
-        self.outputs_dir = "outputs/generated_quizzes"
+        # 使用相对路径，适合云端部署
+        self.templates_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "templates")
+        self.outputs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "outputs", "generated_quizzes")
         
         # 确保输出目录存在
         os.makedirs(self.outputs_dir, exist_ok=True)
