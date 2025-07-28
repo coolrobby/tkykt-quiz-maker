@@ -1,0 +1,188 @@
+<!-- Header内容 -->
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">坦克云课堂</a>
+            <!-- 移动端手风琴菜单按钮 -->
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 移动端手风琴菜单内容 -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>菜单</h3>
+            <button class="close-btn" id="closeMobileMenu">&times;</button>
+        </div>
+        <div class="mobile-menu-content">
+            <a href="https://cdn.chenguochuan.com/webpages/index.html" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🏠</span>
+                <span class="mobile-menu-text">免费资料</span>
+            </a>
+            <a href="#" class="mobile-menu-item" id="mobileConsultBtn">
+                <span class="mobile-menu-icon">💬</span>
+                <span class="mobile-menu-text">咨询</span>
+            </a>
+           <a href="https://tk.chenguochuan.com" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">📚</span>
+                <span class="mobile-menu-text">题库(VIP)</span>
+            </a>
+            <a href="https://m.lizhiweike.com/channel2/1400585?st=sharelink&inviter_id=111623585" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🎓</span>
+                <span class="mobile-menu-text">B级课程(VIP)</span>
+            </a>
+            <a href="https://cdn.chenguochuan.com/webpages/coming-soon.html" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🎯</span>
+                <span class="mobile-menu-text">A级课程(VIP)</span>
+            </a>
+            <a href="https://cdn.chenguochuan.com/webpages/coming-soon.html" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🎓</span>
+                <span class="mobile-menu-text">专升本(VIP)</span>
+            </a>
+            <a href="https://cdn.chenguochuan.com/webpages/tools.html" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🔧</span>
+                <span class="mobile-menu-text">小工具</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 咨询弹窗 -->
+<div id="consultModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="hideConsultModal()">&times;</span>
+        <div class="qr-container" align="center">
+            <img src="https://cdn.chenguochuan.com/img/qrcode-wechat-summer.png" alt="微信:tank_0771" class="qr-code">
+            <p>💬 小宇老师微信号：tank_0771</p>
+            <p>✨ 微信订阅号：坦克云课堂</p>
+            <p>👤 抖音/B站/小红书：不务正业的川哥</p>
+            <p>🌐 主页：tkykt.com</p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Header相关JavaScript功能
+
+// 弹窗功能
+function showConsultModal() {
+    const modal = document.getElementById('consultModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function hideConsultModal() {
+    const modal = document.getElementById('consultModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// 点击弹窗外部关闭弹窗
+window.onclick = function(event) {
+    const modal = document.getElementById('consultModal');
+    if (event.target === modal) {
+        hideConsultModal();
+    }
+}
+
+// 初始化导航功能
+function initNavigation() {
+    // 初始化咨询按钮
+    const consultBtn = document.getElementById('consultBtn');
+    if (consultBtn) {
+        consultBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showConsultModal();
+        });
+    }
+    
+    // 初始化移动端菜单
+    initMobileMenu();
+    
+    console.log('Navigation initialized');
+}
+
+// 移动端菜单功能
+function initMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileConsultBtn = document.getElementById('mobileConsultBtn');
+    
+    if (mobileMenuToggle && mobileMenuOverlay) {
+        // 打开菜单
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // 关闭菜单
+        function closeMobileMenuFunc() {
+            mobileMenuToggle.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // 点击关闭按钮
+        if (closeMobileMenu) {
+            closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+        }
+        
+        // 点击遮罩层关闭
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                closeMobileMenuFunc();
+            }
+        });
+        
+        // 移动端咨询按钮
+        if (mobileConsultBtn) {
+            mobileConsultBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMobileMenuFunc();
+                setTimeout(() => {
+                    showConsultModal();
+                }, 300);
+            });
+        }
+        
+        // 点击菜单项后关闭菜单（除了咨询按钮）
+        const menuItems = document.querySelectorAll('.mobile-menu-item:not(#mobileConsultBtn)');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                closeMobileMenuFunc();
+            });
+        });
+    }
+}
+
+// 页面加载完成后的初始化
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化导航功能
+    initNavigation();
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>

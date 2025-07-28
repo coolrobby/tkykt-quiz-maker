@@ -1,0 +1,3628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>123</title>
+    <style>
+/* 欧美大学风格样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全局链接样式 - 移除下划线 */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding-top: 80px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header样式 */
+.header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+/* 导航图标样式 */
+.nav-icons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.desktop-nav {
+    display: none;
+}
+
+.nav-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-icon:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+.nav-icon svg {
+    margin-bottom: 5px;
+}
+
+.nav-icon .text {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.nav-icon .icon {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+/* VIP下拉菜单样式 */
+.vip-dropdown {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    min-width: 150px;
+    margin-top: 0.5rem;
+}
+
+.vip-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+    border-radius: 6px;
+    margin: 0.25rem;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.dropdown-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.dropdown-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.qr-container {
+    margin-top: 20px;
+}
+
+.qr-code {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.qr-container p {
+    margin-top: 15px;
+    color: #666;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 手风琴菜单样式 */
+.mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hamburger-icon span {
+    width: 24px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    max-height: 70vh;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-menu-overlay.active .mobile-menu {
+    transform: translateY(0);
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-menu-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.mobile-menu-content {
+    padding: 10px 0 30px;
+}
+
+.mobile-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 18px 25px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.mobile-menu-item:hover {
+    background-color: #f8f9fa;
+}
+
+.mobile-menu-item:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu-icon {
+    font-size: 1.6rem;
+    margin-right: 18px;
+    width: 35px;
+    text-align: center;
+}
+
+.mobile-menu-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* 主要内容区域 */
+.main-content {
+    flex: 1;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: calc(100vh - 200px);
+}
+
+/* 学习卡片 */
+.learning-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card p {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.card-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.card-btn:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 特色功能区域 */
+.features-section {
+    text-align: center;
+    padding: 3rem 0;
+    background: white;
+    border-radius: 20px;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.features-section h2 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature {
+    padding: 1.5rem;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.feature h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.feature p {
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Footer样式 */
+.footer {
+    background: #1e3c72;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.footer a {
+    color: #87ceeb;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: none;
+}
+
+/* 目录页样式 */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.task-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.task-card h3 {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.task-card p {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.task-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.task-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 答题页面样式 */
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.quiz-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.quiz-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.quiz-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #667eea;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.start-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.progress-container {
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    margin-top: 0.5rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.question-container {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+}
+
+.question-number {
+    color: #667eea;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.question-text {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option:hover {
+    border-color: #667eea;
+    background: #f0f4ff;
+}
+
+.option.selected {
+    border-color: #667eea;
+    background: #667eea;
+    color: white;
+}
+
+.option.correct {
+    border-color: #28a745;
+    background: #28a745;
+    color: white;
+    animation: correctPulse 0.6s ease-in-out;
+}
+
+.option.incorrect {
+    border-color: #dc3545;
+    background: #dc3545;
+    color: white;
+    animation: incorrectShake 0.6s ease-in-out;
+}
+
+@keyframes correctPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes incorrectShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.option-label {
+    font-weight: 600;
+    margin-right: 0.75rem;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #667eea;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.option.selected .option-label,
+.option.correct .option-label,
+.option.incorrect .option-label {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.fill-blank-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+}
+
+.fill-blank-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.navigation-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.question-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.question-nav-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #e9ecef;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: #666;
+}
+
+.question-nav-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.question-nav-btn.current {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+}
+
+.question-nav-btn.answered {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.results-container {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.results-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.score-display {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.score-excellent {
+    color: #28a745;
+}
+
+.score-good {
+    color: #ffc107;
+}
+
+.score-poor {
+    color: #dc3545;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stat-item {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.wrong-answers {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.wrong-answers h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.wrong-answer-item {
+    padding: 1rem;
+    background: #fff5f5;
+    border: 1px solid #fed7d7;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.wrong-question {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.wrong-details {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.restart-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .header-content {
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .dropdown-menu {
+        min-width: 120px;
+        margin-top: 0.25rem;
+    }
+    
+    .dropdown-item {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .dropdown-icon {
+        font-size: 1rem;
+    }
+    
+    .dropdown-text {
+        font-size: 0.8rem;
+    }
+    
+    .learning-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
+    }
+    
+    .task-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .qr-code {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .content h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .quiz-container {
+        padding: 1rem;
+    }
+    
+    .quiz-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .header-content {
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .features-section {
+        padding: 2rem 0;
+    }
+    
+    .task-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header {
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .quiz-title {
+        font-size: 1.5rem;
+    }
+    
+    .question-text {
+        font-size: 1.1rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .navigation-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* 课程正在制作中页面样式 */
+.coming-soon-container {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.coming-soon-icon {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.coming-soon-title {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.coming-soon-subtitle {
+    font-size: 1.5rem;
+    color: #667eea;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.coming-soon-description {
+    margin-bottom: 3rem;
+}
+
+.coming-soon-description p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.coming-soon-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+}
+
+.feature-item span:last-child {
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.back-home-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 课程制作中页面样式 */
+.course-in-progress {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.course-in-progress h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.course-in-progress p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.progress-indicator {
+    width: 100px;
+    height: 100px;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 测试页面增强样式 */
+.quiz-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.quiz-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.quiz-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.quiz-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+/* 开关按钮增强样式 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.start-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* 进度条增强样式 */
+.progress-container {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-weight: 600;
+    color: #555;
+}
+
+/* 题目导航增强样式 */
+.question-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.question-nav-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-nav-btn:hover {
+    border-color: #667eea;
+    transform: scale(1.1);
+}
+
+.question-nav-btn.current {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+.question-nav-btn.answered {
+    background: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.question-nav-btn.answered.current {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+}
+
+/* 题目容器增强样式 */
+.question-container {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+    border-left: 5px solid #667eea;
+}
+
+.question-number {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.question-text {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.option:hover {
+    border-color: #667eea;
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.option.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+.option-label {
+    font-weight: 600;
+    margin-right: 1rem;
+    min-width: 30px;
+    text-align: center;
+    background: rgba(0,0,0,0.1);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option.selected .option-label {
+    background: rgba(255,255,255,0.2);
+}
+
+.option-text {
+    flex: 1;
+}
+
+/* 填空题增强样式 */
+.fill-blank-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.fill-blank-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 导航按钮增强样式 */
+.navigation-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.nav-btn {
+    padding: 12px 24px;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#submitBtn {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border-color: #28a745;
+    color: white;
+}
+
+#submitBtn:hover {
+    background: linear-gradient(135deg, #218838 0%, #1ea080 100%);
+    border-color: #218838;
+}
+
+/* 结果页面增强样式 */
+.results-container {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin: 2rem 0;
+}
+
+.results-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+}
+
+.score-display {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 15px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.score-excellent {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.score-good {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+}
+
+.score-poor {
+    background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stat-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #666;
+    font-weight: 600;
+}
+
+/* 错题回顾增强样式 */
+.wrong-answers {
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.wrong-answers h3 {
+    color: #dc3545;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.wrong-answer-item {
+    background: white;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+    border-left: 5px solid #dc3545;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.wrong-question {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.wrong-details {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.wrong-details > div {
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.wrong-details > div:first-child {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.wrong-details > div:last-child {
+    background: #d4edda;
+    color: #155724;
+}
+
+.restart-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* 响应式设计 - 课程正在制作中页面 */
+@media (max-width: 768px) {
+    .coming-soon-container {
+        padding: 3rem 1rem;
+    }
+    
+    .coming-soon-title {
+        font-size: 2.5rem;
+    }
+    
+    .coming-soon-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .coming-soon-icon {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .coming-soon-container {
+        padding: 2rem 1rem;
+    }
+    
+    .coming-soon-title {
+        font-size: 2rem;
+    }
+    
+    .coming-soon-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .coming-soon-icon {
+        font-size: 3.5rem;
+    }
+    
+    .feature-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .back-home-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header内容 -->
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">坦克云课堂</a>
+            <!-- 移动端手风琴菜单按钮 -->
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 移动端手风琴菜单内容 -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>菜单</h3>
+            <button class="close-btn" id="closeMobileMenu">&times;</button>
+        </div>
+        <div class="mobile-menu-content">
+            <a href="https://cdn.chenguochuan.com/webpages/index.html" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🏠</span>
+                <span class="mobile-menu-text">免费资料</span>
+            </a>
+            <a href="#" class="mobile-menu-item" id="mobileConsultBtn">
+                <span class="mobile-menu-icon">💬</span>
+                <span class="mobile-menu-text">咨询</span>
+            </a>
+           <a href="https://tk.chenguochuan.com" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">📚</span>
+                <span class="mobile-menu-text">题库(VIP)</span>
+            </a>
+            <a href="https://m.lizhiweike.com/channel2/1400585?st=sharelink&inviter_id=111623585" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🎓</span>
+                <span class="mobile-menu-text">B级课程(VIP)</span>
+            </a>
+            <a href="https://cdn.chenguochuan.com/webpages/coming-soon.html" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🎯</span>
+                <span class="mobile-menu-text">A级课程(VIP)</span>
+            </a>
+            <a href="https://cdn.chenguochuan.com/webpages/coming-soon.html" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🎓</span>
+                <span class="mobile-menu-text">专升本(VIP)</span>
+            </a>
+            <a href="https://cdn.chenguochuan.com/webpages/tools.html" target="_blank" class="mobile-menu-item">
+                <span class="mobile-menu-icon">🔧</span>
+                <span class="mobile-menu-text">小工具</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 咨询弹窗 -->
+<div id="consultModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="hideConsultModal()">&times;</span>
+        <div class="qr-container" align="center">
+            <img src="https://cdn.chenguochuan.com/img/qrcode-wechat-summer.png" alt="微信:tank_0771" class="qr-code">
+            <p>💬 小宇老师微信号：tank_0771</p>
+            <p>✨ 微信订阅号：坦克云课堂</p>
+            <p>👤 抖音/B站/小红书：不务正业的川哥</p>
+            <p>🌐 主页：tkykt.com</p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Header相关JavaScript功能
+
+// 弹窗功能
+function showConsultModal() {
+    const modal = document.getElementById('consultModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function hideConsultModal() {
+    const modal = document.getElementById('consultModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// 点击弹窗外部关闭弹窗
+window.onclick = function(event) {
+    const modal = document.getElementById('consultModal');
+    if (event.target === modal) {
+        hideConsultModal();
+    }
+}
+
+// 初始化导航功能
+function initNavigation() {
+    // 初始化咨询按钮
+    const consultBtn = document.getElementById('consultBtn');
+    if (consultBtn) {
+        consultBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showConsultModal();
+        });
+    }
+    
+    // 初始化移动端菜单
+    initMobileMenu();
+    
+    console.log('Navigation initialized');
+}
+
+// 移动端菜单功能
+function initMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileConsultBtn = document.getElementById('mobileConsultBtn');
+    
+    if (mobileMenuToggle && mobileMenuOverlay) {
+        // 打开菜单
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // 关闭菜单
+        function closeMobileMenuFunc() {
+            mobileMenuToggle.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // 点击关闭按钮
+        if (closeMobileMenu) {
+            closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+        }
+        
+        // 点击遮罩层关闭
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                closeMobileMenuFunc();
+            }
+        });
+        
+        // 移动端咨询按钮
+        if (mobileConsultBtn) {
+            mobileConsultBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMobileMenuFunc();
+                setTimeout(() => {
+                    showConsultModal();
+                }, 300);
+            });
+        }
+        
+        // 点击菜单项后关闭菜单（除了咨询按钮）
+        const menuItems = document.querySelectorAll('.mobile-menu-item:not(#mobileConsultBtn)');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                closeMobileMenuFunc();
+            });
+        });
+    }
+}
+
+// 页面加载完成后的初始化
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化导航功能
+    initNavigation();
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>
+    
+    <main class="content">
+        <div class="container">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h1 class="quiz-title">123</h1>
+                    
+                    <!-- 用户控制选项 -->
+                    <div class="quiz-controls">
+                        <div class="control-group">
+                            <label for="shuffleQuestions">题目乱序:</label>
+                            <label class="switch">
+                                <input type="checkbox" id="shuffleQuestions">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="control-group">
+                            <label for="shuffleOptions">选项乱序:</label>
+                            <label class="switch">
+                                <input type="checkbox" id="shuffleOptions">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <button class="start-btn" onclick="startQuiz()">开始答题</button>
+                    </div>
+                </div>
+                
+                <!-- 进度条 -->
+                <div class="progress-container" id="progressContainer" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0 / 24</div>
+                </div>
+                
+                <!-- 题目导航 -->
+                <div class="question-nav" id="questionNav" style="display: none;"></div>
+                
+                <!-- 题目容器 -->
+                <div id="questionsContainer" style="display: none;">
+                    
+                <div class="question-container" id="question_0" style="display: none;">
+                    <div class="question-number">第 1 题</div>
+                    <div class="question-text">I am very happy to declare that this year's sales target ____ahead of time.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(0, 0)" id="option_0_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">achieved</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(0, 1)" id="option_0_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">has achieved</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(0, 2)" id="option_0_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">has been achieved</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(0, 3)" id="option_0_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">had been achieved</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_1" style="display: none;">
+                    <div class="question-number">第 2 题</div>
+                    <div class="question-text">Last year some additional measures ____to protect customers' personal information by our company.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(1, 0)" id="option_1_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">are taken</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(1, 1)" id="option_1_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">were taken</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(1, 2)" id="option_1_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">have been taken</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(1, 3)" id="option_1_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">will be taken</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_2" style="display: none;">
+                    <div class="question-number">第 3 题</div>
+                    <div class="question-text">Linda ____her training in a joint company by the end of next month.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(2, 0)" id="option_2_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">finishes</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(2, 1)" id="option_2_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">has finished</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(2, 2)" id="option_2_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">had finished</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(2, 3)" id="option_2_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">will have finished</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_3" style="display: none;">
+                    <div class="question-number">第 4 题</div>
+                    <div class="question-text">If you ____ your mind, please call me at this number before Saturday.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(3, 0)" id="option_3_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">changed</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(3, 1)" id="option_3_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">would change</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(3, 2)" id="option_3_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">had changed</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(3, 3)" id="option_3_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">change</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_4" style="display: none;">
+                    <div class="question-number">第 5 题</div>
+                    <div class="question-text">About a quarter of American adults say that they____a book in whole in the past year.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(4, 0)" id="option_4_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">will not read</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(4, 1)" id="option_4_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">do not read</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(4, 2)" id="option_4_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">would not read</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(4, 3)" id="option_4_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">have not read</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_5" style="display: none;">
+                    <div class="question-number">第 6 题</div>
+                    <div class="question-text">She said that when they first ____the firm she found it difficult to find an ideal location.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(5, 0)" id="option_5_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">started</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(5, 1)" id="option_5_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">will start</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(5, 2)" id="option_5_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">start</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(5, 3)" id="option_5_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">have started</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_6" style="display: none;">
+                    <div class="question-number">第 7 题</div>
+                    <div class="question-text">I have been looking for a job for about a month now, but I ____any yet.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(6, 0)" id="option_6_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">don't find</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(6, 1)" id="option_6_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">won' t find</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(6, 2)" id="option_6_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">didn't find</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(6, 3)" id="option_6_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">haven' t found</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_7" style="display: none;">
+                    <div class="question-number">第 8 题</div>
+                    <div class="question-text">If I ____ in your position, I wouldn't accept this job offer.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(7, 0)" id="option_7_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">had been</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(7, 1)" id="option_7_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">am</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(7, 2)" id="option_7_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">have been</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(7, 3)" id="option_7_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">were</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_8" style="display: none;">
+                    <div class="question-number">第 9 题</div>
+                    <div class="question-text">Our two senior programmers ____each other ever since they were at college.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(8, 0)" id="option_8_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">know</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(8, 1)" id="option_8_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">knew</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(8, 2)" id="option_8_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">have known</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(8, 3)" id="option_8_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">are knowing</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_9" style="display: none;">
+                    <div class="question-number">第 10 题</div>
+                    <div class="question-text">One of the issues____yesterday was the impact of climate change on children.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(9, 0)" id="option_9_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">to discuss</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(9, 1)" id="option_9_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">discussed</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(9, 2)" id="option_9_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">to be discussed</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(9, 3)" id="option_9_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">having discussed</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_10" style="display: none;">
+                    <div class="question-number">第 11 题</div>
+                    <div class="question-text">____a free sample, you need to complete this form and send it to us.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(10, 0)" id="option_10_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">Receive</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(10, 1)" id="option_10_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">Receiving</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(10, 2)" id="option_10_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">To receive</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(10, 3)" id="option_10_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">Having received</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_11" style="display: none;">
+                    <div class="question-number">第 12 题</div>
+                    <div class="question-text">By the time you graduate from college, I probably ____from my company.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(11, 0)" id="option_11_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">have retired</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(11, 1)" id="option_11_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">had retired</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(11, 2)" id="option_11_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">will have retired</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(11, 3)" id="option_11_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">will retire</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_12" style="display: none;">
+                    <div class="question-number">第 13 题</div>
+                    <div class="question-text">I ____ her if I had known her true condition and I regret it now.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(12, 0)" id="option_12_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">would have called</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(12, 1)" id="option_12_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">will call</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(12, 2)" id="option_12_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">have called</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(12, 3)" id="option_12_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">called</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_13" style="display: none;">
+                    <div class="question-number">第 14 题</div>
+                    <div class="question-text">____ AI, driverless cars could be seen as the car for the future.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(13, 0)" id="option_13_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">To use</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(13, 1)" id="option_13_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">Use</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(13, 2)" id="option_13_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">Using</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(13, 3)" id="option_13_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">Being used</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_14" style="display: none;">
+                    <div class="question-number">第 15 题</div>
+                    <div class="question-text">If I were in your place, I ____ him to start his own business.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(14, 0)" id="option_14_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">will help</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(14, 1)" id="option_14_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">help</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(14, 2)" id="option_14_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">helped</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(14, 3)" id="option_14_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">would help</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_15" style="display: none;">
+                    <div class="question-number">第 16 题</div>
+                    <div class="question-text">If I ____ in your position, I would turn down the job offer.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(15, 0)" id="option_15_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">am</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(15, 1)" id="option_15_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">were</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(15, 2)" id="option_15_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">will be</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(15, 3)" id="option_15_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">have been</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_16" style="display: none;">
+                    <div class="question-number">第 17 题</div>
+                    <div class="question-text">We ____ in the same company ever since we graduated from college.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(16, 0)" id="option_16_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">work</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(16, 1)" id="option_16_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">will work</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(16, 2)" id="option_16_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">are working</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(16, 3)" id="option_16_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">have worked</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_17" style="display: none;">
+                    <div class="question-number">第 18 题</div>
+                    <div class="question-text">Don't respond if someone sends you e-mail ____ things that make you feel uncomfortable.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(17, 0)" id="option_17_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">saying</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(17, 1)" id="option_17_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">say</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(17, 2)" id="option_17_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">said</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(17, 3)" id="option_17_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">having said</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_18" style="display: none;">
+                    <div class="question-number">第 19 题</div>
+                    <div class="question-text">You'll need to consider the cost of running your business, ____ time, money, and resources.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(18, 0)" id="option_18_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">include</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(18, 1)" id="option_18_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">including</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(18, 2)" id="option_18_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">included</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(18, 3)" id="option_18_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">to include</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_19" style="display: none;">
+                    <div class="question-number">第 20 题</div>
+                    <div class="question-text">____ for its beautiful night views and shopping centers, Hong Kong attracts millions of tourists each year.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(19, 0)" id="option_19_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">Know</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(19, 1)" id="option_19_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">Knowing</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(19, 2)" id="option_19_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">Known</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(19, 3)" id="option_19_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">To know</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_20" style="display: none;">
+                    <div class="question-number">第 21 题</div>
+                    <div class="question-text">Mr. Li, who is 41, ____ in our company for nearly thirteen years now.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(20, 0)" id="option_20_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">is working</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(20, 1)" id="option_20_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">has worked</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(20, 2)" id="option_20_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">was working</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(20, 3)" id="option_20_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">worked</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_21" style="display: none;">
+                    <div class="question-number">第 22 题</div>
+                    <div class="question-text">When ____ if he could help us with the program, Becker said he had no time.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(21, 0)" id="option_21_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">asking</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(21, 1)" id="option_21_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">asked</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(21, 2)" id="option_21_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">ask</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(21, 3)" id="option_21_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">was asked</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_22" style="display: none;">
+                    <div class="question-number">第 23 题</div>
+                    <div class="question-text">If I ____ in your position, I would accept their suggestion.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(22, 0)" id="option_22_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">am</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(22, 1)" id="option_22_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">will be</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(22, 2)" id="option_22_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">were</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(22, 3)" id="option_22_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">have been</span>
+                        </div>
+                    </div></div>
+
+                <div class="question-container" id="question_23" style="display: none;">
+                    <div class="question-number">第 24 题</div>
+                    <div class="question-text">____ a college student, he often stayed up late studying for exams and writing papers.</div>
+                    <div class="options-container">
+                        <div class="option" onclick="selectOption(23, 0)" id="option_23_0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">To be</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(23, 1)" id="option_23_1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">Being</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(23, 2)" id="option_23_2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">Have been</span>
+                        </div>
+                    
+                        <div class="option" onclick="selectOption(23, 3)" id="option_23_3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">Be</span>
+                        </div>
+                    </div></div>
+                </div>
+                
+                <!-- 导航按钮 -->
+                <div class="navigation-container" id="navigationContainer" style="display: none;">
+                    <button class="nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>上一题</button>
+                    <button class="nav-btn" id="nextBtn" onclick="nextQuestion()">下一题</button>
+                    <button class="nav-btn" id="submitBtn" onclick="submitQuiz()" style="display: none;">提交答案</button>
+                </div>
+                
+                <!-- 结果容器 -->
+                <div id="resultsContainer" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer内容 -->
+<footer class="footer">
+    <div class="container">
+        <p>网站由<a href="https://hydun.com/" target="_blank">火毅盾云安全</a>提供防护及CDN加速服务</p>
+    </div>
+</footer>
+    
+    <script>
+
+// 测试数据和状态管理
+let originalQuestions = [
+  {
+    "id": 1,
+    "question": "I am very happy to declare that this year's sales target ____ahead of time.",
+    "type": "四选项选择题",
+    "answer": "has been achieved",
+    "options": [
+      {
+        "label": "A",
+        "text": "achieved"
+      },
+      {
+        "label": "B",
+        "text": "has achieved"
+      },
+      {
+        "label": "C",
+        "text": "has been achieved"
+      },
+      {
+        "label": "D",
+        "text": "had been achieved"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Last year some additional measures ____to protect customers' personal information by our company.",
+    "type": "四选项选择题",
+    "answer": "were taken",
+    "options": [
+      {
+        "label": "A",
+        "text": "are taken"
+      },
+      {
+        "label": "B",
+        "text": "were taken"
+      },
+      {
+        "label": "C",
+        "text": "have been taken"
+      },
+      {
+        "label": "D",
+        "text": "will be taken"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Linda ____her training in a joint company by the end of next month.",
+    "type": "四选项选择题",
+    "answer": "will have finished",
+    "options": [
+      {
+        "label": "A",
+        "text": "finishes"
+      },
+      {
+        "label": "B",
+        "text": "has finished"
+      },
+      {
+        "label": "C",
+        "text": "had finished"
+      },
+      {
+        "label": "D",
+        "text": "will have finished"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "If you ____ your mind, please call me at this number before Saturday.",
+    "type": "四选项选择题",
+    "answer": "change",
+    "options": [
+      {
+        "label": "A",
+        "text": "changed"
+      },
+      {
+        "label": "B",
+        "text": "would change"
+      },
+      {
+        "label": "C",
+        "text": "had changed"
+      },
+      {
+        "label": "D",
+        "text": "change"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "About a quarter of American adults say that they____a book in whole in the past year.",
+    "type": "四选项选择题",
+    "answer": "have not read",
+    "options": [
+      {
+        "label": "A",
+        "text": "will not read"
+      },
+      {
+        "label": "B",
+        "text": "do not read"
+      },
+      {
+        "label": "C",
+        "text": "would not read"
+      },
+      {
+        "label": "D",
+        "text": "have not read"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "She said that when they first ____the firm she found it difficult to find an ideal location.",
+    "type": "四选项选择题",
+    "answer": "started",
+    "options": [
+      {
+        "label": "A",
+        "text": "started"
+      },
+      {
+        "label": "B",
+        "text": "will start"
+      },
+      {
+        "label": "C",
+        "text": "start"
+      },
+      {
+        "label": "D",
+        "text": "have started"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "I have been looking for a job for about a month now, but I ____any yet.",
+    "type": "四选项选择题",
+    "answer": "haven' t found",
+    "options": [
+      {
+        "label": "A",
+        "text": "don't find"
+      },
+      {
+        "label": "B",
+        "text": "won' t find"
+      },
+      {
+        "label": "C",
+        "text": "didn't find"
+      },
+      {
+        "label": "D",
+        "text": "haven' t found"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "If I ____ in your position, I wouldn't accept this job offer.",
+    "type": "四选项选择题",
+    "answer": "were",
+    "options": [
+      {
+        "label": "A",
+        "text": "had been"
+      },
+      {
+        "label": "B",
+        "text": "am"
+      },
+      {
+        "label": "C",
+        "text": "have been"
+      },
+      {
+        "label": "D",
+        "text": "were"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Our two senior programmers ____each other ever since they were at college.",
+    "type": "四选项选择题",
+    "answer": "have known",
+    "options": [
+      {
+        "label": "A",
+        "text": "know"
+      },
+      {
+        "label": "B",
+        "text": "knew"
+      },
+      {
+        "label": "C",
+        "text": "have known"
+      },
+      {
+        "label": "D",
+        "text": "are knowing"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "One of the issues____yesterday was the impact of climate change on children.",
+    "type": "四选项选择题",
+    "answer": "discussed",
+    "options": [
+      {
+        "label": "A",
+        "text": "to discuss"
+      },
+      {
+        "label": "B",
+        "text": "discussed"
+      },
+      {
+        "label": "C",
+        "text": "to be discussed"
+      },
+      {
+        "label": "D",
+        "text": "having discussed"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "____a free sample, you need to complete this form and send it to us.",
+    "type": "四选项选择题",
+    "answer": "To receive",
+    "options": [
+      {
+        "label": "A",
+        "text": "Receive"
+      },
+      {
+        "label": "B",
+        "text": "Receiving"
+      },
+      {
+        "label": "C",
+        "text": "To receive"
+      },
+      {
+        "label": "D",
+        "text": "Having received"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "By the time you graduate from college, I probably ____from my company.",
+    "type": "四选项选择题",
+    "answer": "will have retired",
+    "options": [
+      {
+        "label": "A",
+        "text": "have retired"
+      },
+      {
+        "label": "B",
+        "text": "had retired"
+      },
+      {
+        "label": "C",
+        "text": "will have retired"
+      },
+      {
+        "label": "D",
+        "text": "will retire"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "I ____ her if I had known her true condition and I regret it now.",
+    "type": "四选项选择题",
+    "answer": "would have called",
+    "options": [
+      {
+        "label": "A",
+        "text": "would have called"
+      },
+      {
+        "label": "B",
+        "text": "will call"
+      },
+      {
+        "label": "C",
+        "text": "have called"
+      },
+      {
+        "label": "D",
+        "text": "called"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "____ AI, driverless cars could be seen as the car for the future.",
+    "type": "四选项选择题",
+    "answer": "Using",
+    "options": [
+      {
+        "label": "A",
+        "text": "To use"
+      },
+      {
+        "label": "B",
+        "text": "Use"
+      },
+      {
+        "label": "C",
+        "text": "Using"
+      },
+      {
+        "label": "D",
+        "text": "Being used"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "If I were in your place, I ____ him to start his own business.",
+    "type": "四选项选择题",
+    "answer": "would help",
+    "options": [
+      {
+        "label": "A",
+        "text": "will help"
+      },
+      {
+        "label": "B",
+        "text": "help"
+      },
+      {
+        "label": "C",
+        "text": "helped"
+      },
+      {
+        "label": "D",
+        "text": "would help"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "If I ____ in your position, I would turn down the job offer.",
+    "type": "四选项选择题",
+    "answer": "were",
+    "options": [
+      {
+        "label": "A",
+        "text": "am"
+      },
+      {
+        "label": "B",
+        "text": "were"
+      },
+      {
+        "label": "C",
+        "text": "will be"
+      },
+      {
+        "label": "D",
+        "text": "have been"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "We ____ in the same company ever since we graduated from college.",
+    "type": "四选项选择题",
+    "answer": "have worked",
+    "options": [
+      {
+        "label": "A",
+        "text": "work"
+      },
+      {
+        "label": "B",
+        "text": "will work"
+      },
+      {
+        "label": "C",
+        "text": "are working"
+      },
+      {
+        "label": "D",
+        "text": "have worked"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "Don't respond if someone sends you e-mail ____ things that make you feel uncomfortable.",
+    "type": "四选项选择题",
+    "answer": "saying",
+    "options": [
+      {
+        "label": "A",
+        "text": "saying"
+      },
+      {
+        "label": "B",
+        "text": "say"
+      },
+      {
+        "label": "C",
+        "text": "said"
+      },
+      {
+        "label": "D",
+        "text": "having said"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "You'll need to consider the cost of running your business, ____ time, money, and resources.",
+    "type": "四选项选择题",
+    "answer": "including",
+    "options": [
+      {
+        "label": "A",
+        "text": "include"
+      },
+      {
+        "label": "B",
+        "text": "including"
+      },
+      {
+        "label": "C",
+        "text": "included"
+      },
+      {
+        "label": "D",
+        "text": "to include"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "____ for its beautiful night views and shopping centers, Hong Kong attracts millions of tourists each year.",
+    "type": "四选项选择题",
+    "answer": "Known",
+    "options": [
+      {
+        "label": "A",
+        "text": "Know"
+      },
+      {
+        "label": "B",
+        "text": "Knowing"
+      },
+      {
+        "label": "C",
+        "text": "Known"
+      },
+      {
+        "label": "D",
+        "text": "To know"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "Mr. Li, who is 41, ____ in our company for nearly thirteen years now.",
+    "type": "四选项选择题",
+    "answer": "has worked",
+    "options": [
+      {
+        "label": "A",
+        "text": "is working"
+      },
+      {
+        "label": "B",
+        "text": "has worked"
+      },
+      {
+        "label": "C",
+        "text": "was working"
+      },
+      {
+        "label": "D",
+        "text": "worked"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "When ____ if he could help us with the program, Becker said he had no time.",
+    "type": "四选项选择题",
+    "answer": "asked",
+    "options": [
+      {
+        "label": "A",
+        "text": "asking"
+      },
+      {
+        "label": "B",
+        "text": "asked"
+      },
+      {
+        "label": "C",
+        "text": "ask"
+      },
+      {
+        "label": "D",
+        "text": "was asked"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "If I ____ in your position, I would accept their suggestion.",
+    "type": "四选项选择题",
+    "answer": "were",
+    "options": [
+      {
+        "label": "A",
+        "text": "am"
+      },
+      {
+        "label": "B",
+        "text": "will be"
+      },
+      {
+        "label": "C",
+        "text": "were"
+      },
+      {
+        "label": "D",
+        "text": "have been"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "____ a college student, he often stayed up late studying for exams and writing papers.",
+    "type": "四选项选择题",
+    "answer": "Being",
+    "options": [
+      {
+        "label": "A",
+        "text": "To be"
+      },
+      {
+        "label": "B",
+        "text": "Being"
+      },
+      {
+        "label": "C",
+        "text": "Have been"
+      },
+      {
+        "label": "D",
+        "text": "Be"
+      }
+    ]
+  }
+];
+let questions = [...originalQuestions];
+let currentQuestionIndex = 0;
+let userAnswers = {};
+let quizStarted = false;
+let startTime = null;
+
+// 开始测试
+function startQuiz() {
+    const shuffleQuestions = document.getElementById('shuffleQuestions').checked;
+    const shuffleOptions = document.getElementById('shuffleOptions').checked;
+    
+    // 重置数据
+    questions = [...originalQuestions];
+    userAnswers = {};
+    currentQuestionIndex = 0;
+    startTime = new Date();
+    
+    // 题目乱序
+    if (shuffleQuestions) {
+        questions = shuffleArray([...questions]);
+    }
+    
+    // 选项乱序
+    if (shuffleOptions) {
+        questions.forEach(question => {
+            if (question.options && question.options.length > 0) {
+                question.options = shuffleArray([...question.options]);
+            }
+        });
+    }
+    
+    // 显示测试界面
+    document.querySelector('.quiz-controls').style.display = 'none';
+    document.getElementById('progressContainer').style.display = 'block';
+    document.getElementById('questionNav').style.display = 'flex';
+    document.getElementById('questionsContainer').style.display = 'block';
+    document.getElementById('navigationContainer').style.display = 'flex';
+    
+    // 初始化题目导航
+    initQuestionNavigation();
+    
+    // 显示第一题
+    showQuestion(0);
+    
+    // 更新进度
+    updateProgress();
+    
+    quizStarted = true;
+}
+
+// 数组乱序函数
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+}
+
+// 初始化题目导航
+function initQuestionNavigation() {
+    const nav = document.getElementById('questionNav');
+    nav.innerHTML = '';
+    
+    questions.forEach((_, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'question-nav-btn';
+        btn.textContent = index + 1;
+        btn.onclick = () => showQuestion(index);
+        btn.id = `nav_btn_${index}`;
+        nav.appendChild(btn);
+    });
+}
+
+// 显示指定题目
+function showQuestion(index) {
+    // 隐藏所有题目
+    questions.forEach((_, i) => {
+        const questionEl = document.getElementById(`question_${i}`);
+        if (questionEl) questionEl.style.display = 'none';
+    });
+    
+    // 显示当前题目
+    const currentQuestionEl = document.getElementById(`question_${index}`);
+    if (currentQuestionEl) {
+        currentQuestionEl.style.display = 'block';
+    }
+    
+    currentQuestionIndex = index;
+    
+    // 更新导航按钮状态
+    updateNavigationButtons();
+    updateQuestionNavigation();
+    
+    // 恢复用户答案
+    restoreUserAnswer(index);
+}
+
+// 选择选项
+function selectOption(questionIndex, optionIndex) {
+    const question = questions[questionIndex];
+    const selectedOption = question.options[optionIndex];
+    const correctAnswer = question.answer;
+    
+    // 清除之前的选择和反馈样式
+    question.options.forEach((_, i) => {
+        const optionEl = document.getElementById(`option_${questionIndex}_${i}`);
+        if (optionEl) {
+            optionEl.classList.remove('selected', 'correct', 'incorrect');
+        }
+    });
+    
+    // 标记当前选择
+    const optionEl = document.getElementById(`option_${questionIndex}_${optionIndex}`);
+    if (optionEl) optionEl.classList.add('selected');
+    
+    // 保存用户答案
+    userAnswers[questionIndex] = selectedOption.text;
+    
+    // 显示即时反馈
+    const isCorrect = selectedOption.text === correctAnswer;
+    
+    // 标记所有选项的正确性
+    question.options.forEach((option, i) => {
+        const optEl = document.getElementById(`option_${questionIndex}_${i}`);
+        if (optEl) {
+            if (option.text === correctAnswer) {
+                // 正确答案用绿色标记
+                optEl.classList.add('correct');
+            } else if (i === optionIndex && !isCorrect) {
+                // 用户选择的错误答案用红色标记
+                optEl.classList.add('incorrect');
+            }
+        }
+    });
+    
+    // 更新题目导航状态
+    updateQuestionNavigation();
+    
+    // 自动跳转到下一题
+    setTimeout(() => {
+        if (currentQuestionIndex < questions.length - 1) {
+            nextQuestion();
+        } else {
+            // 最后一题，显示提交按钮
+            document.getElementById('submitBtn').style.display = 'inline-block';
+        }
+    }, 1500); // 增加延迟时间，让用户看到反馈
+}
+
+// 恢复用户答案
+function restoreUserAnswer(questionIndex) {
+    const question = questions[questionIndex];
+    const userAnswer = userAnswers[questionIndex];
+    
+    if (!userAnswer) {
+        // 清除所有反馈样式
+        if (question.options) {
+            question.options.forEach((_, i) => {
+                const optionEl = document.getElementById(`option_${questionIndex}_${i}`);
+                if (optionEl) {
+                    optionEl.classList.remove('selected', 'correct', 'incorrect');
+                }
+            });
+        }
+        return;
+    }
+    
+    if (question.type === '填空题') {
+        const input = document.getElementById(`answer_${questionIndex}`);
+        if (input) input.value = userAnswer;
+    } else {
+        // 选择题 - 只恢复选择状态，不显示反馈
+        question.options.forEach((option, i) => {
+            const optionEl = document.getElementById(`option_${questionIndex}_${i}`);
+            if (optionEl) {
+                // 清除所有样式
+                optionEl.classList.remove('selected', 'correct', 'incorrect');
+                
+                // 只标记用户选择的答案
+                if (option.text === userAnswer) {
+                    optionEl.classList.add('selected');
+                }
+            }
+        });
+    }
+}
+
+// 处理填空题输入
+document.addEventListener('input', function(e) {
+    if (e.target.classList.contains('fill-blank-input')) {
+        const questionIndex = parseInt(e.target.id.split('_')[1]);
+        userAnswers[questionIndex] = e.target.value.trim();
+        updateQuestionNavigation();
+    }
+});
+
+// 上一题
+function previousQuestion() {
+    if (currentQuestionIndex > 0) {
+        showQuestion(currentQuestionIndex - 1);
+    }
+}
+
+// 下一题
+function nextQuestion() {
+    if (currentQuestionIndex < questions.length - 1) {
+        showQuestion(currentQuestionIndex + 1);
+    }
+}
+
+// 更新导航按钮状态
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    prevBtn.disabled = currentQuestionIndex === 0;
+    nextBtn.style.display = currentQuestionIndex === questions.length - 1 ? 'none' : 'inline-block';
+    
+    // 检查是否所有题目都已回答
+    const allAnswered = questions.every((_, index) => userAnswers.hasOwnProperty(index));
+    if (allAnswered || currentQuestionIndex === questions.length - 1) {
+        submitBtn.style.display = 'inline-block';
+    }
+}
+
+// 更新题目导航状态
+function updateQuestionNavigation() {
+    questions.forEach((_, index) => {
+        const navBtn = document.getElementById(`nav_btn_${index}`);
+        if (navBtn) {
+            navBtn.classList.remove('current', 'answered');
+            
+            if (index === currentQuestionIndex) {
+                navBtn.classList.add('current');
+            }
+            
+            if (userAnswers.hasOwnProperty(index)) {
+                navBtn.classList.add('answered');
+            }
+        }
+    });
+}
+
+// 更新进度
+function updateProgress() {
+    const answeredCount = Object.keys(userAnswers).length;
+    const totalCount = questions.length;
+    const percentage = (answeredCount / totalCount) * 100;
+    
+    document.getElementById('progressFill').style.width = `${percentage}%`;
+    document.getElementById('progressText').textContent = `${answeredCount} / ${totalCount}`;
+}
+
+// 提交测试
+function submitQuiz() {
+    const endTime = new Date();
+    const totalTime = Math.round((endTime - startTime) / 1000);
+    
+    // 计算成绩
+    const results = calculateResults();
+    
+    // 显示结果
+    showResults(results, totalTime);
+}
+
+// 计算成绩
+function calculateResults() {
+    let correctCount = 0;
+    let wrongAnswers = [];
+    
+    questions.forEach((question, index) => {
+        const userAnswer = userAnswers[index] || '';
+        const correctAnswer = question.answer;
+        
+        // 判断答案是否正确（忽略大小写）
+        const isCorrect = userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase().trim();
+        
+        if (isCorrect) {
+            correctCount++;
+        } else {
+            wrongAnswers.push({
+                questionNumber: index + 1,
+                question: question.question,
+                userAnswer: userAnswer || '未回答',
+                correctAnswer: correctAnswer,
+                type: question.type
+            });
+        }
+    });
+    
+    const totalCount = questions.length;
+    const wrongCount = totalCount - correctCount;
+    const accuracy = Math.round((correctCount / totalCount) * 100);
+    
+    return {
+        totalCount,
+        correctCount,
+        wrongCount,
+        accuracy,
+        wrongAnswers
+    };
+}
+
+// 显示结果
+function showResults(results, totalTime) {
+    const container = document.getElementById('resultsContainer');
+    
+    // 隐藏测试界面
+    document.getElementById('progressContainer').style.display = 'none';
+    document.getElementById('questionNav').style.display = 'none';
+    document.getElementById('questionsContainer').style.display = 'none';
+    document.getElementById('navigationContainer').style.display = 'none';
+    
+    // 确定成绩等级
+    let scoreClass = 'score-poor';
+    let scoreText = '需要加强';
+    if (results.accuracy >= 90) {
+        scoreClass = 'score-excellent';
+        scoreText = '优秀';
+    } else if (results.accuracy >= 70) {
+        scoreClass = 'score-good';
+        scoreText = '良好';
+    }
+    
+    // 生成错题列表
+    let wrongAnswersHtml = '';
+    if (results.wrongAnswers.length > 0) {
+        wrongAnswersHtml = `
+            <div class="wrong-answers">
+                <h3>错题回顾</h3>
+                ${results.wrongAnswers.map(item => `
+                    <div class="wrong-answer-item">
+                        <div class="wrong-question">第${item.questionNumber}题: ${item.question}</div>
+                        <div class="wrong-details">
+                            <div>你的答案: ${item.userAnswer}</div>
+                            <div>正确答案: ${item.correctAnswer}</div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    container.innerHTML = `
+        <div class="results-container">
+            <h2 class="results-title">测试完成！</h2>
+            <div class="score-display ${scoreClass}">${results.accuracy}% (${scoreText})</div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">${results.totalCount}</div>
+                    <div class="stat-label">总题数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${results.correctCount}</div>
+                    <div class="stat-label">正确题数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${results.wrongCount}</div>
+                    <div class="stat-label">错误题数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${Math.floor(totalTime / 60)}:${String(totalTime % 60).padStart(2, '0')}</div>
+                    <div class="stat-label">用时</div>
+                </div>
+            </div>
+            
+            ${wrongAnswersHtml}
+            
+            <button class="restart-btn" onclick="restartQuiz()">重新开始</button>
+        </div>
+    `;
+    
+    container.style.display = 'block';
+}
+
+// 重新开始测试
+function restartQuiz() {
+    // 重置所有状态
+    questions = [...originalQuestions];
+    userAnswers = {};
+    currentQuestionIndex = 0;
+    quizStarted = false;
+    startTime = null;
+    
+    // 重置界面
+    document.querySelector('.quiz-controls').style.display = 'flex';
+    document.getElementById('progressContainer').style.display = 'none';
+    document.getElementById('questionNav').style.display = 'none';
+    document.getElementById('questionsContainer').style.display = 'none';
+    document.getElementById('navigationContainer').style.display = 'none';
+    document.getElementById('resultsContainer').style.display = 'none';
+    
+    // 重置控制选项
+    document.getElementById('shuffleQuestions').checked = false;
+    document.getElementById('shuffleOptions').checked = false;
+}
+
+// 监听进度更新
+setInterval(() => {
+    if (quizStarted) {
+        updateProgress();
+    }
+}, 1000);
+        
+    </script>
+</body>
+</html>
