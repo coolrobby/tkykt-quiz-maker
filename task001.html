@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语B级大纲词汇101关-001</title>
+    <style>
+/* 欧美大学风格样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全局链接样式 - 移除下划线 */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding-top: 80px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header样式 */
+.header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+/* 导航图标样式 */
+.nav-icons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.desktop-nav {
+    display: none;
+}
+
+.nav-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-icon:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+.nav-icon svg {
+    margin-bottom: 5px;
+}
+
+.nav-icon .text {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.nav-icon .icon {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+/* VIP下拉菜单样式 */
+.vip-dropdown {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    min-width: 150px;
+    margin-top: 0.5rem;
+}
+
+.vip-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+    border-radius: 6px;
+    margin: 0.25rem;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.dropdown-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.dropdown-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.qr-container {
+    margin-top: 20px;
+}
+
+.qr-code {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.qr-container p {
+    margin-top: 15px;
+    color: #666;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 手风琴菜单样式 */
+.mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hamburger-icon span {
+    width: 24px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    max-height: 70vh;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-menu-overlay.active .mobile-menu {
+    transform: translateY(0);
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-menu-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.mobile-menu-content {
+    padding: 10px 0 30px;
+}
+
+.mobile-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 18px 25px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.mobile-menu-item:hover {
+    background-color: #f8f9fa;
+}
+
+.mobile-menu-item:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu-icon {
+    font-size: 1.6rem;
+    margin-right: 18px;
+    width: 35px;
+    text-align: center;
+}
+
+.mobile-menu-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* 主要内容区域 */
+.main-content {
+    flex: 1;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: calc(100vh - 200px);
+}
+
+/* 学习卡片 */
+.learning-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card p {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.card-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.card-btn:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 特色功能区域 */
+.features-section {
+    text-align: center;
+    padding: 3rem 0;
+    background: white;
+    border-radius: 20px;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.features-section h2 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature {
+    padding: 1.5rem;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.feature h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.feature p {
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Footer样式 */
+.footer {
+    background: #1e3c72;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.footer a {
+    color: #87ceeb;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: none;
+}
+
+/* 目录页样式 */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.task-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.task-card h3 {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.task-card p {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.task-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.task-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .header-content {
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .dropdown-menu {
+        min-width: 120px;
+        margin-top: 0.25rem;
+    }
+    
+    .dropdown-item {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .dropdown-icon {
+        font-size: 1rem;
+    }
+    
+    .dropdown-text {
+        font-size: 0.8rem;
+    }
+    
+    .learning-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
+    }
+    
+    .task-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .qr-code {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .content h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .header-content {
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .features-section {
+        padding: 2rem 0;
+    }
+    
+    .task-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header {
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+}
+
+/* 课程正在制作中页面样式 */
+.coming-soon-container {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.coming-soon-icon {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.coming-soon-title {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.coming-soon-subtitle {
+    font-size: 1.5rem;
+    color: #667eea;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.coming-soon-description {
+    margin-bottom: 3rem;
+}
+
+.coming-soon-description p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.coming-soon-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+}
+
+.feature-item span:last-child {
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.back-home-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 响应式设计 - 课程正在制作中页面 */
+@media (max-width: 768px) {
+    .coming-soon-container {
+        padding: 3rem 1rem;
+    }
+    
+    .coming-soon-title {
+        font-size: 2.5rem;
+    }
+    
+    .coming-soon-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .coming-soon-icon {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .coming-soon-container {
+        padding: 2rem 1rem;
+    }
+    
+    .coming-soon-title {
+        font-size: 2rem;
+    }
+    
+    .coming-soon-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .coming-soon-icon {
+        font-size: 3.5rem;
+    }
+    
+    .feature-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .back-home-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header内容 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">坦克云课堂</a>
+                <!-- 移动端手风琴菜单按钮 -->
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <div class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 移动端手风琴菜单内容 -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <h3>菜单</h3>
+                <button class="close-btn" id="closeMobileMenu">&times;</button>
+            </div>
+            <div class="mobile-menu-content">
+                                <a href="https://cdn.chenguochuan.com/webpages/index.html" class="mobile-menu-item">
+                    <span class="mobile-menu-icon">🏠</span>
+                    <span class="mobile-menu-text">免费资料</span>
+                </a>
+                <a href="#" class="mobile-menu-item" id="mobileConsultBtn">
+                    <span class="mobile-menu-icon">💬</span>
+                    <span class="mobile-menu-text">咨询</span>
+                </a>
+               <a href="https://tk.chenguochuan.com" target="_blank" class="mobile-menu-item">
+                    <span class="mobile-menu-icon">📚</span>
+                    <span class="mobile-menu-text">题库(VIP)</span>
+                </a>
+                <a href="https://m.lizhiweike.com/channel2/1400585?st=sharelink&inviter_id=111623585" target="_blank" class="mobile-menu-item">
+                    <span class="mobile-menu-icon">🎓</span>
+                    <span class="mobile-menu-text">B级课程(VIP)</span>
+                </a>
+                <a href="https://cdn.chenguochuan.com/webpages/coming-soon.html" target="_blank" class="mobile-menu-item">
+                    <span class="mobile-menu-icon">🎯</span>
+                    <span class="mobile-menu-text">A级课程(VIP)</span>
+                </a>
+                <a href="https://cdn.chenguochuan.com/webpages/coming-soon.html" target="_blank" class="mobile-menu-item">
+                    <span class="mobile-menu-icon">🎓</span>
+                    <span class="mobile-menu-text">专升本(VIP)</span>
+                </a>
+                <a href="https://cdn.chenguochuan.com/webpages/tools.html" target="_blank" class="mobile-menu-item">
+                    <span class="mobile-menu-icon">🔧</span>
+                    <span class="mobile-menu-text">小工具</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 咨询弹窗 -->
+         <div id="consultModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideConsultModal()">&times;</span>
+            <div class="qr-container" align="center">
+                <img src="https://cdn.chenguochuan.com/img/qrcode-wechat-summer.png" alt="微信:tank_0771" class="qr-code">
+                <p>💬 小宇老师微信号：tank_0771</p>
+                <p>✨ 微信订阅号：坦克云课堂</p>
+                <p>👤 抖音/B站/小红书：不务正业的川哥</p>
+                <p>🌐 主页：tkykt.com</p>
+            </div>
+        </div>
+    </div>
+    
+    <main class="content">
+        <div class="container">
+            <h1>英语B级大纲词汇101关-001</h1>
+            <div class="code-content">
+                <h2>第一步：读单词</h2>
+<p class="explain">购买课程的学员请使用词汇宝典中的版本，有逐个单词的点读。免费版本只有前5课有视频带读。</p>
+<div align="center"><iframe src="//player.bilibili.com/player.html?bvid=BV1TL411b77h&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></div>
+<h2>第二步 写单词</h2>
+<p class="explain">请根据中文意思，在方框中输入相应的英文单词，写完之后系统会自动批改。如果写错了，可以直接重写。如果不会用，请在微信订阅号“<span style="color: red;">坦克云课堂</span>”中回复“<span style="color: red;">三步法记单词<span>”
+</p>
+<iframe src="https://wp.chenguochuan.com/wp/wp-admin/admin-ajax.php?action=h5p_embed&id=6" width="auto" height="auto" frameborder="0" allowfullscreen="allowfullscreen" title="坦克云课堂"></iframe><script src="https://wp.chenguochuan.com/wp/wp-content/plugins/h5p/h5p-php-library/js/h5p-resizer.js" charset="UTF-8"></script>
+<h2>第三步 玩单词</h2>
+<p class="explain">利用“单词记忆神器”复习巩固单词。共5种模式，请点击右下方的"选择学习模式”进行选择。如下方显示空白，请多刷新几次。<a class="how-to-use" href="https://mp.weixin.qq.com/s/th_VgI7RFP9UGgGeEv_Vew">如果不会使用，请点击这里。</a>
+</p><iframe src="https://quizlet.com/609552332/match/embed?i=1da6lo&x=1jj1" height="500" width="100%" style="border:0"></iframe>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer内容 -->
+    <footer class="footer">
+        <div class="container">
+            <p>网站由<a href="https://hydun.com/" target="_blank">火毅盾云安全</a>提供防护及CDN加速服务</p>
+        </div>
+    </footer>
+    
+    <script>
+// 主要JavaScript功能
+
+// 弹窗功能
+function showConsultModal() {
+    const modal = document.getElementById('consultModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function hideConsultModal() {
+    const modal = document.getElementById('consultModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// 点击弹窗外部关闭弹窗
+window.onclick = function(event) {
+    const modal = document.getElementById('consultModal');
+    if (event.target === modal) {
+        hideConsultModal();
+    }
+}
+
+// 初始化导航功能
+function initNavigation() {
+    // 初始化咨询按钮
+    const consultBtn = document.getElementById('consultBtn');
+    if (consultBtn) {
+        consultBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showConsultModal();
+        });
+    }
+    
+    // 初始化移动端菜单
+    initMobileMenu();
+    
+    console.log('Navigation initialized');
+}
+
+// 移动端菜单功能
+function initMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileConsultBtn = document.getElementById('mobileConsultBtn');
+    
+    if (mobileMenuToggle && mobileMenuOverlay) {
+        // 打开菜单
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // 关闭菜单
+        function closeMobileMenuFunc() {
+            mobileMenuToggle.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // 点击关闭按钮
+        if (closeMobileMenu) {
+            closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+        }
+        
+        // 点击遮罩层关闭
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                closeMobileMenuFunc();
+            }
+        });
+        
+        // 移动端咨询按钮
+        if (mobileConsultBtn) {
+            mobileConsultBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMobileMenuFunc();
+                setTimeout(() => {
+                    showConsultModal();
+                }, 300);
+            });
+        }
+        
+        // 点击菜单项后关闭菜单（除了咨询按钮）
+        const menuItems = document.querySelectorAll('.mobile-menu-item:not(#mobileConsultBtn)');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                closeMobileMenuFunc();
+            });
+        });
+    }
+}
+
+// 页面加载完成后的初始化
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化导航功能
+    initNavigation();
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>
